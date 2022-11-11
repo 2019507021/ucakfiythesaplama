@@ -1,0 +1,82 @@
+import  java.util.Scanner;
+
+public class ucakbiletifiythesaplama {
+    public static void main(String[] args) {
+        int km,yas,y_tipi;
+        double perKm = 0.10;
+        double n_tutar,yasİndrimi,ekstraIndirim,indirimliTutar,gdUcret;
+
+        Scanner inp = new Scanner(System.in);
+        System.out.print("Mesafeyi km türünden giriniz: ");
+        km = inp.nextInt();
+        System.out.print("Yaşınızı giriniz: ");
+        yas = inp.nextInt();
+        System.out.print("1= Tek Yön 2=Gidiş Dönüş:");
+        y_tipi = inp.nextInt();
+
+        n_tutar = km * perKm;
+        gdUcret = (km * perKm) * 2;
+
+
+
+        if((km < 0 || yas < 0 )|| (y_tipi != 1) && (y_tipi !=2)) {
+            System.out.println("Hatalı veri girdiniz.");
+        }else {
+            switch (y_tipi){
+                case 1:
+                    if(yas >= 0 && yas < 12){
+                        yasİndrimi = n_tutar * 0.50;
+                        indirimliTutar = n_tutar - yasİndrimi;
+                        System.out.println("Normal Tutar: " + n_tutar);
+                        System.out.println("İndirimli Tutar: " + indirimliTutar);
+                    }else if(yas >= 12 && yas < 24){
+                        yasİndrimi = n_tutar * 0.10;
+                        indirimliTutar = n_tutar - yasİndrimi;
+                        System.out.println("Normal Tutar: " + n_tutar);
+                        System.out.println("İndirimli Tutar: " + indirimliTutar);
+                    }else if(yas >= 24 && yas <= 65){
+                        yasİndrimi = n_tutar * 0;
+                        indirimliTutar = n_tutar - yasİndrimi;
+                        System.out.println("Normal Tutar: " + n_tutar);
+                        System.out.println("İndirimli Tutar: " + indirimliTutar);
+                    }else{
+                        yasİndrimi = n_tutar * 0.30;
+                        indirimliTutar = n_tutar - yasİndrimi;
+                        System.out.println("Normal Tutar: " + n_tutar);
+                        System.out.println("İndirimli Tutar: " + indirimliTutar);
+                    }
+                    break;
+                case  2:
+                    if(yas >= 0 && yas < 12){
+                        yasİndrimi = gdUcret * 0.50;
+                        ekstraIndirim = gdUcret * 0.20;
+                        indirimliTutar = gdUcret - (ekstraIndirim + yasİndrimi);
+                        System.out.println("Normal Tutar: " + gdUcret);
+                        System.out.println("İndirimli Tutar: " + indirimliTutar);
+                    }else if(yas >= 12 && yas < 24){
+                        yasİndrimi = gdUcret * 0.10;
+                        ekstraIndirim = gdUcret * 0.20;
+                        indirimliTutar = gdUcret - (ekstraIndirim + yasİndrimi);
+                        System.out.println("Normal Tutar: " + gdUcret);
+                        System.out.println("İndirimli Tutar: " + indirimliTutar);
+                    }else if(yas >= 24 && yas <= 65){
+                        yasİndrimi = gdUcret * 0;
+                        ekstraIndirim = gdUcret * 0.20;
+                        indirimliTutar = gdUcret - (ekstraIndirim + yasİndrimi);
+                        System.out.println("Normal Tutar: " + gdUcret);
+                        System.out.println("İndirimli Tutar: " + indirimliTutar);
+                    }else {
+                        yasİndrimi = gdUcret * 0.30;
+                        ekstraIndirim = gdUcret * 0.20;
+                        indirimliTutar = gdUcret - (ekstraIndirim + yasİndrimi);
+                        System.out.println("Normal Tutar: " + gdUcret);
+                        System.out.println("İndirimli Tutar: " + indirimliTutar);
+                    }
+                    break;
+                default:
+                    System.out.println("Hatalı veri girdiniz.");
+                    break;
+            }
+        }
+    }
+}
